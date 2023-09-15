@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="plotSet" EntityType="Model1.plot" />
+    <EntitySet Name="homeSet" EntityType="Model1.home" />
+    <EntitySet Name="customerSet" EntityType="Model1.customer" />
+    <EntitySet Name="employeSet" EntityType="Model1.employe" />
+    <AssociationSet Name="employecustomer" Association="Model1.employecustomer">
+      <End Role="employe" EntitySet="employeSet" />
+      <End Role="customer" EntitySet="customerSet" />
+    </AssociationSet>
+    <AssociationSet Name="customerhome" Association="Model1.customerhome">
+      <End Role="customer" EntitySet="customerSet" />
+      <End Role="home" EntitySet="homeSet" />
+    </AssociationSet>
+    <AssociationSet Name="customerplot" Association="Model1.customerplot">
+      <End Role="customer" EntitySet="customerSet" />
+      <End Role="plot" EntitySet="plotSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="plot">
+    <Key>
+      <PropertyRef Name="plotID" />
+    </Key>
+    <Property Name="plotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="plotName" Type="String" Nullable="false" />
+    <Property Name="plotAdres" Type="String" Nullable="false" />
+    <Property Name="plotPrice" Type="Int32" Nullable="false" />
+    <Property Name="plotM2" Type="Int32" Nullable="false" />
+    <Property Name="customer_customerID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="home">
+    <Key>
+      <PropertyRef Name="homeID" />
+    </Key>
+    <Property Name="homeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="homeName" Type="String" Nullable="false" />
+    <Property Name="homeAdres" Type="String" Nullable="false" />
+    <Property Name="homePrice" Type="Int32" Nullable="false" />
+    <Property Name="homeM2" Type="Int32" Nullable="false" />
+    <Property Name="customer_customerID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customerID" />
+    </Key>
+    <Property Name="customerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customerName" Type="String" Nullable="false" />
+    <Property Name="customerAge" Type="Int32" Nullable="false" />
+    <Property Name="customerPhone" Type="String" Nullable="false" />
+    <Property Name="customerPW" Type="String" Nullable="false" />
+    <Property Name="employe_employeID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employe">
+    <Key>
+      <PropertyRef Name="employeID" />
+    </Key>
+    <Property Name="employeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employeName" Type="String" Nullable="false" />
+    <Property Name="employeAge" Type="Int32" Nullable="false" />
+    <Property Name="employeWope" Type="Int32" Nullable="false" />
+    <Property Name="employePhone" Type="String" Nullable="false" />
+    <Property Name="employePW" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="employecustomer">
+    <End Type="Model1.employe" Role="employe" Multiplicity="1" />
+    <End Type="Model1.customer" Role="customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employe">
+        <PropertyRef Name="employeID" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="employe_employeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="customerhome">
+    <End Type="Model1.customer" Role="customer" Multiplicity="1" />
+    <End Type="Model1.home" Role="home" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerID" />
+      </Principal>
+      <Dependent Role="home">
+        <PropertyRef Name="customer_customerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="customerplot">
+    <End Type="Model1.customer" Role="customer" Multiplicity="1" />
+    <End Type="Model1.plot" Role="plot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerID" />
+      </Principal>
+      <Dependent Role="plot">
+        <PropertyRef Name="customer_customerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

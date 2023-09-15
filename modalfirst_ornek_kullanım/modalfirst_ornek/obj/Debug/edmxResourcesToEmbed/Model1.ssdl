@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="plotSet" EntityType="Model1.Store.plotSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="homeSet" EntityType="Model1.Store.homeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="customerSet" EntityType="Model1.Store.customerSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employeSet" EntityType="Model1.Store.employeSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="employecustomer" Association="Model1.Store.employecustomer">
+      <End Role="employe" EntitySet="employeSet" />
+      <End Role="customer" EntitySet="customerSet" />
+    </AssociationSet>
+    <AssociationSet Name="customerhome" Association="Model1.Store.customerhome">
+      <End Role="customer" EntitySet="customerSet" />
+      <End Role="home" EntitySet="homeSet" />
+    </AssociationSet>
+    <AssociationSet Name="customerplot" Association="Model1.Store.customerplot">
+      <End Role="customer" EntitySet="customerSet" />
+      <End Role="plot" EntitySet="plotSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="plotSet">
+    <Key>
+      <PropertyRef Name="plotID" />
+    </Key>
+    <Property Name="plotID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="plotName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="plotAdres" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="plotPrice" Type="int" Nullable="false" />
+    <Property Name="plotM2" Type="int" Nullable="false" />
+    <Property Name="customer_customerID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="homeSet">
+    <Key>
+      <PropertyRef Name="homeID" />
+    </Key>
+    <Property Name="homeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="homeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="homeAdres" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="homePrice" Type="int" Nullable="false" />
+    <Property Name="homeM2" Type="int" Nullable="false" />
+    <Property Name="customer_customerID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customerSet">
+    <Key>
+      <PropertyRef Name="customerID" />
+    </Key>
+    <Property Name="customerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="customerName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="customerAge" Type="int" Nullable="false" />
+    <Property Name="customerPhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="customerPW" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="employe_employeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employeSet">
+    <Key>
+      <PropertyRef Name="employeID" />
+    </Key>
+    <Property Name="employeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="employeAge" Type="int" Nullable="false" />
+    <Property Name="employeWope" Type="int" Nullable="false" />
+    <Property Name="employePhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="employePW" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="employecustomer">
+    <End Role="employe" Type="Model1.Store.employeSet" Multiplicity="1" />
+    <End Role="customer" Type="Model1.Store.customerSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employe">
+        <PropertyRef Name="employeID" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="employe_employeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="customerhome">
+    <End Role="customer" Type="Model1.Store.customerSet" Multiplicity="1" />
+    <End Role="home" Type="Model1.Store.homeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerID" />
+      </Principal>
+      <Dependent Role="home">
+        <PropertyRef Name="customer_customerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="customerplot">
+    <End Role="customer" Type="Model1.Store.customerSet" Multiplicity="1" />
+    <End Role="plot" Type="Model1.Store.plotSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customerID" />
+      </Principal>
+      <Dependent Role="plot">
+        <PropertyRef Name="customer_customerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

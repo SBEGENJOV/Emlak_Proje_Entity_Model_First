@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container1">
+    <EntitySetMapping Name="plotSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.plot)">
+        <MappingFragment StoreEntitySet="plotSet">
+          <ScalarProperty Name="plotID" ColumnName="plotID" />
+          <ScalarProperty Name="plotName" ColumnName="plotName" />
+          <ScalarProperty Name="plotAdres" ColumnName="plotAdres" />
+          <ScalarProperty Name="plotPrice" ColumnName="plotPrice" />
+          <ScalarProperty Name="plotM2" ColumnName="plotM2" />
+          <ScalarProperty Name="customer_customerID" ColumnName="customer_customerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="homeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.home)">
+        <MappingFragment StoreEntitySet="homeSet">
+          <ScalarProperty Name="homeID" ColumnName="homeID" />
+          <ScalarProperty Name="homeName" ColumnName="homeName" />
+          <ScalarProperty Name="homeAdres" ColumnName="homeAdres" />
+          <ScalarProperty Name="homePrice" ColumnName="homePrice" />
+          <ScalarProperty Name="homeM2" ColumnName="homeM2" />
+          <ScalarProperty Name="customer_customerID" ColumnName="customer_customerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customerSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.customer)">
+        <MappingFragment StoreEntitySet="customerSet">
+          <ScalarProperty Name="customerID" ColumnName="customerID" />
+          <ScalarProperty Name="customerName" ColumnName="customerName" />
+          <ScalarProperty Name="customerAge" ColumnName="customerAge" />
+          <ScalarProperty Name="customerPhone" ColumnName="customerPhone" />
+          <ScalarProperty Name="customerPW" ColumnName="customerPW" />
+          <ScalarProperty Name="employe_employeID" ColumnName="employe_employeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.employe)">
+        <MappingFragment StoreEntitySet="employeSet">
+          <ScalarProperty Name="employeID" ColumnName="employeID" />
+          <ScalarProperty Name="employeName" ColumnName="employeName" />
+          <ScalarProperty Name="employeAge" ColumnName="employeAge" />
+          <ScalarProperty Name="employeWope" ColumnName="employeWope" />
+          <ScalarProperty Name="employePhone" ColumnName="employePhone" />
+          <ScalarProperty Name="employePW" ColumnName="employePW" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

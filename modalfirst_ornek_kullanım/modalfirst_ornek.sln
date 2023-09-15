@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "modalfirst_ornek", "modalfirst_ornek\modalfirst_ornek.csproj", "{AE70347C-4EC2-4447-B66A-2E5603F07528}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE70347C-4EC2-4447-B66A-2E5603F07528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE70347C-4EC2-4447-B66A-2E5603F07528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE70347C-4EC2-4447-B66A-2E5603F07528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE70347C-4EC2-4447-B66A-2E5603F07528}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A25CA90-974E-4A0B-908E-BDDA1D6F6BAC}
+	EndGlobalSection
+EndGlobal
